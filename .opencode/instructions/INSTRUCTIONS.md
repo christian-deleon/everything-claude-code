@@ -299,6 +299,55 @@ interface Repository<T> {
 
 ---
 
+## MCP Server Usage Guidelines
+
+**CRITICAL - Cost Optimization:** Follow this priority order to minimize API costs:
+
+### Documentation Lookups
+
+1. **FIRST: Use Context7** (`mcp_context7_*` tools)
+   - Framework/library documentation (Next.js, React, Supabase, Rust, Go, etc.)
+   - Always check Context7 first for technical documentation
+   - Examples: "How to use React hooks", "Supabase row level security", "Next.js app router"
+
+2. **SECOND: Use Brave Search** (`mcp_brave-search_*` tools) - **FREE**
+   - General web searches
+   - Current information, news, blog posts
+   - "Near me" or location-based queries
+   - When Context7 doesn't have the docs
+   - Examples: "latest TypeScript features", "best practices for...", "how to fix..."
+
+3. **LAST RESORT: Firecrawl** (`mcp_firecrawl_*` tools) - **COSTS MONEY**
+   - **Only use when you need to scrape/crawl a specific website**
+   - Deep content extraction from non-indexed sites
+   - Structured data extraction with schemas
+   - **NEVER use for general documentation or web searches**
+   - Examples: Extracting specific data from a site, crawling a specific domain
+
+### When to Use Each MCP
+
+| Task | Use This MCP | Why |
+|------|-------------|-----|
+| Framework docs (React, Next.js, etc.) | **context7** | Live, up-to-date docs |
+| General web search | **brave-search** | FREE, fast |
+| "How to" tutorials | **brave-search** | FREE, finds blog posts |
+| Current news/events | **brave-search** | FREE, real-time |
+| Specific site scraping | **firecrawl** | Only when necessary |
+| GitHub operations | **github** | Direct API access |
+| Kubernetes/Docker | **kubernetes/docker** | Direct cluster access |
+| Browser automation | **playwright** | E2E testing |
+| Persistent memory | **memory** | Cross-session storage |
+
+### Cost-Saving Rules
+
+- ❌ **NEVER** use Firecrawl for documentation lookups
+- ❌ **NEVER** use Firecrawl for general web searches
+- ✅ **ALWAYS** try Context7 first for framework/library docs
+- ✅ **ALWAYS** use Brave Search for general information (it's FREE)
+- ✅ **ONLY** use Firecrawl when you need to scrape a specific website
+
+---
+
 ## OpenCode-Specific Notes
 
 Since OpenCode does not support hooks, the following actions that were automated in Claude Code must be done manually:
